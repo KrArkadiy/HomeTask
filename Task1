@@ -1,0 +1,25 @@
+public class Task1 {
+    public static List<Integer> mergeSortedCollections(List<Integer> l1, List<Integer> l2) {
+        List<Integer> l3 = new ArrayList<>();
+        for (int i = 0; i < l1.size(); i++) {
+            for (int j = 0; j < l2.size(); j++) {
+                if (l1.get(i) == l2.get(j)) {
+                    l3.add(l1.get(i));
+                }
+            }
+        }
+        l3.sort(Comparator.naturalOrder());
+        return l3;
+    }
+    public static List<Integer> mergeSortedCollections2(List<Integer> l1, List<Integer> l2){
+        List<Integer> l3 = new ArrayList<>();
+        Set<Integer> s1 = new HashSet(l1);
+        for (int i = 0; i < l2.size(); i++) {
+            if(s1.contains(l2.get(i))){
+                l3.add(l2.get(i));
+            }
+        }
+        l3.sort(Comparator.naturalOrder());
+        return l3;
+    }
+}
