@@ -1,0 +1,27 @@
+package main.java.com.KrArkadiy.javacore.chapter18;
+
+import java.util.Stack;
+
+public class Task2 {
+    static boolean checkBrackets(String str){
+        Stack st = new Stack();
+        char[] array = str.toCharArray();
+        if(array.length%2 != 0){
+            return false;
+        }
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == '[' || array[i] == '(' || array[i] == '{') {
+                st.push(array[i]);
+            } else if (array[i] == ']' || array[i] == ')' || array[i] == '}') {
+                if (st.size() != 0) {
+                    char last = (char) st.lastElement();
+                    if ((last == '[' && array[i] == ']') || (last == '(' && array[i] == ')')
+                            || (last == '{' && array[i] == '}')) {
+                        st.pop();
+                    }
+                } else return false;
+            }
+        }
+        return (st.size() == 0);
+    }
+}
